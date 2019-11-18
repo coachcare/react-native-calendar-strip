@@ -33,6 +33,9 @@ export default StyleSheet.create({
   icon: {
     resizeMode: "contain"
   },
+  calendarIcon: {
+    marginLeft: 5
+  },
 
   //CALENDAR DAY
   dateContainer: {

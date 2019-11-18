@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Text, View } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 
 import styles from "./Calendar.style.js";
 
@@ -16,8 +16,21 @@ class CalendarHeader extends Component {
       PropTypes.number
     ]),
     datesForWeek: PropTypes.array.isRequired,
-    allowHeaderTextScaling: PropTypes.bool
+    allowHeaderTextScaling: PropTypes.bool,
+    displayCalendarIcon: PropTypes.bool,
+    onCalendarDateSelected: PropTypes.func
   };
+
+  constructor(props) {
+    super(props);
+
+    this.onCalendarDateSelected = this.onCalendarDateSelected.bind(this);
+  }
+
+  // Open Calendar
+  onCalendarDateSelected() {
+    this.props.onCalendarDateSelected && this.props.onCalendarDateSelected();
+  }
 
   shouldComponentUpdate(nextProps) {
     return JSON.stringify(this.props) !== JSON.stringify(nextProps);
@@ -58,9 +71,9 @@ class CalendarHeader extends Component {
 
     return `${
       monthFormatting.length > 1 ? firstDay.format(monthFormatting) : ""
-    } ${monthFormatting.length > 1 ? "/" : ""} ${lastDay.format(
-      calendarHeaderFormat
-    )}`;
+      } ${monthFormatting.length > 1 ? "/" : ""} ${lastDay.format(
+        calendarHeaderFormat
+      )}`;
   }
 
   render() {
@@ -68,6 +81,10 @@ class CalendarHeader extends Component {
       this.props.datesForWeek,
       this.props.calendarHeaderFormat
     );
+
+    const iconComponent = require("./img/calendar.png")
+    const imageSize = { width: 15, height: 15 };
+
     return (
       <View style={this.props.calendarHeaderContainerStyle}>
         <Text
@@ -79,6 +96,20 @@ class CalendarHeader extends Component {
           allowFontScaling={this.props.allowHeaderTextScaling}
         >
           {headerText}
+          {this.props.displayCalendarIcon && this.props.onCalendarDateSelected ? (
+            <TouchableOpacity
+              style={[styles.iconContainer]}
+              onPress={this.onCalendarDateSelected}
+            >
+              <Image
+                style={[
+                  styles.calendarIcon,
+                  imageSize
+                ]}
+                source={iconComponent}
+              />
+            </TouchableOpacity>
+          ) : null}
         </Text>
       </View>
     );
