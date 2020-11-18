@@ -221,7 +221,7 @@ class CalendarDay extends Component {
         if (this.props.highlightDateNumberStyle) {
           dateNumberStyle = [
             styles.dateNumber,
-            ...this.props.highlightDateNumberStyle
+            this.props.highlightDateNumberStyle
           ];
         } else {
           dateNumberStyle = [
