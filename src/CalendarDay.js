@@ -211,24 +211,8 @@ class CalendarDay extends Component {
         ];
       }
       if (this.state.selected) {
-        // This is a very poorly coded fix. But need to update this calendar soon. So keeping it verbose and clear
-        if (this.props.highlightDateNameStyle) {
-          dateNameStyle = [styles.dateName, this.props.highlightDateNameStyle];
-        } else {
-          dateNameStyle = [styles.dateName];
-        }
-
-        if (this.props.highlightDateNumberStyle) {
-          dateNumberStyle = [
-            styles.dateNumber,
-            this.props.highlightDateNumberStyle
-          ];
-        } else {
-          dateNumberStyle = [
-            styles.dateNumber
-          ];
-        }
-
+        dateNameStyle = [styles.dateName];
+        dateNumberStyle = [styles.dateNumber];
       }
     }
 
