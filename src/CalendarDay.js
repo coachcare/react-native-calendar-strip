@@ -116,12 +116,14 @@ class CalendarDay extends Component {
   }
 
   calcSizes(props) {
+    const temporarySize = !props.size ? 40 : props.size;
+
     return {
-      containerSize: Math.round(props.size),
-      containerPadding: Math.round(props.size / 5),
-      containerBorderRadius: Math.round(props.size / 2),
-      dateNameFontSize: Math.round(props.size / 5),
-      dateNumberFontSize: Math.round(props.size / 2.9)
+      containerSize: Math.round(temporarySize),
+      containerPadding: Math.round(temporarySize / 5),
+      containerBorderRadius: Math.round(temporarySize / 2),
+      dateNameFontSize: Math.round(temporarySize / 5),
+      dateNumberFontSize: Math.round(temporarySize / 2.9)
     };
   }
 
