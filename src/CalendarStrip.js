@@ -129,7 +129,7 @@ class CalendarStrip extends Component {
       ...weekData,
       dayComponentWidth: 0,
       height: 0,
-      monthFontSize: 0,
+      monthFontSize: 10,
       selectorSize: 0
     };
 
@@ -534,8 +534,8 @@ class CalendarStrip extends Component {
     );
     let monthFontSize = Math.round(dayComponentWidth / 3.2);
     let selectorSize = Math.round(dayComponentWidth / 2.5);
-    let height = this.props.showMonth ? monthFontSize : 0;
-    height += this.props.showDate ? dayComponentWidth : 0; // assume square element sizes
+    let height = this.props.showMonth ? monthFontSize : 10;
+    height += this.props.showDate ? dayComponentWidth : 10; // assume square element sizes
     selectorSize = Math.min(selectorSize, height);
 
     this.setState({
